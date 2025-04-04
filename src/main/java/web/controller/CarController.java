@@ -9,11 +9,11 @@ import web.service.CarService;
 @Controller
 public class CarController {
 
-    private final CarService carService = new CarService();
+    private final CarService carService;
 
-//    public CarController(CarService carService){
-//        this.carService = carService;
-//    }
+    public CarController(CarService carService){
+        this.carService = carService;
+    }
     @GetMapping("/cars")
     public String showCars(@RequestParam(required = false) Integer count, Model model) {
         model.addAttribute("cars", carService.getCarsByCount(count));
